@@ -1,0 +1,92 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run -d chrome
+
+## exception
+
+RPCError: ext.flutter.profileWidgetBuilds: (-32603) ext.flutter.profileWidgetBuilds: Unexpected error from chrome devtools:
+text: Uncaught (in promise)
+exception:
+  description: null
+  type: string
+  value: Unexpected null value.
+attempted JS eval: `require("dart_sdk").developer.invokeExtension(
+    "ext.flutter.profileWidgetBuilds", JSON.stringify({}));
+`
+
+#0      handleErrorIfPresent (package:dwds/src/utilities/shared.dart:97:5)
+#1      ChromeProxyService.callServiceExtension (package:dwds/src/services/chrome_proxy_service.dart:351:5)
+<asynchronous suspension>
+#2      StackZoneSpecification._registerUnaryCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:125:47)
+<asynchronous suspension>
+
+
+```
+#0      new _OutstandingRequest (package:vm_service/src/vm_service.dart:1734:45)
+#1      VmService._call (package:vm_service/src/vm_service.dart:2245:21)
+#2      VmService.callServiceExtension (package:vm_service/src/vm_service.dart:2216:14)
+#3      FlutterVmService._checkedCallServiceExtension (package:flutter_tools/src/vmservice.dart:776:28)
+#4      FlutterVmService.invokeFlutterExtensionRpcRaw (package:flutter_tools/src/vmservice.dart:795:49)
+#5      FlutterVmService._flutterToggle (package:flutter_tools/src/vmservice.dart:598:41)
+#6      FlutterVmService.flutterToggleProfileWidgetBuilds (package:flutter_tools/src/vmservice.dart:633:9)
+#7      ResidentHandlers.debugToggleProfileWidgetBuilds (package:flutter_tools/src/resident_runner.dart:809:32)
+<asynchronous suspension>
+#8      TerminalHandler.processTerminalInput (package:flutter_tools/src/resident_runner.dart:1685:7)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel dev, 2.13.0-0.1.pre, on Ubuntu 20.04.4 LTS 5.13.0-44-generic, locale en_US.UTF-8)
+    • Flutter version 2.13.0-0.1.pre at /home/eyob/snap/flutter/common/flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 13a2fb10b8 (8 weeks ago), 2022-04-12 15:34:25 -0500
+    • Engine revision 499984f99c
+    • Dart version 2.17.0 (build 2.17.0-266.1.beta)
+    • DevTools version 2.12.1
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 32.1.0-rc1)
+    • Android SDK at /home/eyob/Android/Sdk
+    • Platform android-32, build-tools 32.1.0-rc1
+    • Java binary at: /snap/android-studio/121/android-studio/jre/bin/java
+    • Java version OpenJDK Runtime Environment (build 11.0.12+0-b1504.28-7817840)
+    • All Android licenses accepted.
+
+[✓] Chrome - develop for the web
+    • Chrome at google-chrome
+
+[✓] Linux toolchain - develop for Linux desktop
+    • clang version 6.0.0-1ubuntu2 (tags/RELEASE_600/final)
+    • cmake version 3.10.2
+    • ninja version 1.8.2
+    • pkg-config version 0.29.1
+
+[✓] Android Studio (version 2021.2)
+    • Android Studio at /snap/android-studio/121/android-studio
+    • Flutter plugin version 67.1.2
+    • Dart plugin version 212.5744
+    • Java version OpenJDK Runtime Environment (build 11.0.12+0-b1504.28-7817840)
+
+[✓] Android Studio (version 2021.1)
+    • Android Studio at /snap/android-studio/119/android-studio
+    • Flutter plugin version 66.0.1
+    • Dart plugin version 211.7817
+    • Java version OpenJDK Runtime Environment (build 11.0.11+0-b60-7590822)
+
+[✓] VS Code (version 1.67.2)
+    • VS Code at /usr/share/code
+    • Flutter extension version 3.42.0
+
+[✓] Connected device (2 available)
+    • Linux (desktop) • linux  • linux-x64      • Ubuntu 20.04.4 LTS 5.13.0-44-generic
+    • Chrome (web)    • chrome • web-javascript • Google Chrome 102.0.5005.61
+
+[✓] HTTP Host Availability
+    • All required HTTP hosts are available
+
+• No issues found!
+```
